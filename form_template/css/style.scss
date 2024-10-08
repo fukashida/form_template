@@ -1,0 +1,534 @@
+/* デフォルト */
+@charset "utf-8";
+
+/* レスポンシブ設定 */
+
+$breakpoints: (
+  "ssp": "screen and (max-width:320px)",
+  "sp": "screen and (max-width:650px)",
+  "tb": "screen and (max-width:768px)",
+  "mb": "screen and (max-width:900px)",
+  "nb": "screen and (max-width:1024px)",
+  "np": "screen and (max-width:1440px)"
+) !default;
+
+@mixin pc($breakpoint: nb) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+@media screen and (min-width: 321px) {
+  .ssp {
+    display: none;
+  }
+}
+@media screen and (min-width: 651px) {
+  .sp {
+    display: none;
+  }
+}
+@media screen and (max-width: 650px) {
+  .pc {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .tb {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .nb {
+    display: none;
+  }
+}
+
+/* リセットCSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+  margin: auto;
+}
+
+h2 {
+    line-height: 1.25;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 40px;
+    text-align: center;
+    @include pc(sp){
+        margin-bottom: 40px;
+        font-size: 28px;
+    }
+}
+
+body {
+    font-family: "YuGothic","Yu Gothic", "游ゴシック", sans-serif;
+    padding: 80px 0;
+    @include pc(sp){
+        padding: 80px 0;
+        font-size: 16px;
+    }
+}
+
+
+/*============================
+  お問い合わせフォーム
+================================*/
+
+
+.contact {
+    padding: 0px 0 100px;
+    @include pc(sp){
+        padding: 0px 0 80px;
+    }
+    & p {
+        &.error_msg_7 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #ff006d;
+            font-weight: lighter;
+            position: relative;
+            border-radius: 5px;
+            margin: 0 0 50px;
+            @include pc(mb){
+                font-size: 20px;
+            }
+            @include pc(sp){
+                display: block;
+                font-size: 16px;
+                margin: 0 auto 40px;
+                width: 225px;
+            }
+        }
+        &.error_msg_5 {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #F50042;
+            position: relative;
+            @include pc(sp){
+                display: block;
+                font-size: 16px;
+                margin: 0 auto 40px;
+                width: 225px;
+            }
+        }
+        &.error_msg {
+            font-size: 15px;
+            margin-top: 5px;
+            color: #ff006d;
+            position: relative;
+            @include pc(sp){
+                font-size: 13px;
+            }    
+        }
+    }
+    & .container{
+        max-width: 930px;
+        width: calc(100% - 80px);
+        margin: auto;
+        @include pc(sp){
+            width: calc(100% - 30px);
+        }
+        & .flex{
+            width: 65%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            @include pc(mb){
+                width: 85%;
+            }
+            @include pc(sp){
+                width: 315px;
+            }
+            & .box {
+                padding-top: 5px;
+                width: 180px;
+                height: 180px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background-color: #00a48591;
+                @include pc(sp){
+                    width: 103px;
+                    height: 103px;
+                }
+                & p {
+                    font-size: 18px;
+                    font-weight: bold;
+                    text-align: center;
+                    color: white;
+                    @include pc(sp){
+                        font-size: 13px;
+                    }
+                    &:nth-child(2){
+                        font-size: 22px;
+                        @include pc(sp){
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+        & .contact-content{
+            & label{
+                display: block;
+                color: #000;
+                margin-bottom: 10px;
+                }                
+           & .flex-item {
+                margin-bottom: 30px;
+                @include pc(sp){
+                    margin-bottom: 15px;
+                }
+                & input[type="text"] {
+                    width: 100%;
+                    font-size: 18px;
+                    padding: 17px 24px;
+                    border-radius: 5px;
+                    border: solid 2px #8f8f8f2b;;
+                    @include pc(sp){
+                        padding: 17px;
+                        font-size: 14px;
+                    }
+                }
+                & input[type="tel"] {
+                    direction: ltr;
+                    padding-block: 1px;
+                    padding-inline: 2px;
+                }
+            }
+        } 
+            
+    }  
+    & input[type="datetime-local" i] {  
+        width: 50%;
+        font-size: 18px;
+        padding: 17px 24px;
+        border-radius: 5px;
+        border: solid 1px #9F9F9F;
+        @include pc(mb){
+            width: 100%;
+            padding: 17px;
+        }
+    } 
+    & #contact_message{
+    width: 100%;
+    height: 281px;
+    font-size: 18px;
+    padding: 17px 24px;
+    border-radius: 5px;
+    border: solid 2px #8f8f8f2b;
+    font-weight: normal;
+        @include pc(sp){
+            padding: 17px;
+            font-size: 14px;
+        }
+        &::placeholder {
+            color: #9F9F9F;
+            font-weight: normal;
+            }
+            
+    }
+    & input[type="submit"] {
+        display: flex;
+        font-weight: bold;
+        align-items: center;
+        justify-content: center;
+        margin: 50px auto 0;
+        width: 100%;
+        height: 75px;
+        font-size: 18px;
+        color: white;
+        text-decoration-line: none;
+        background: #343f55;
+        border: none;
+        box-shadow: 4px 4px 0 rgb(127, 127, 127, 0.5);
+        @include pc(sp){
+            margin: 35px auto 0;
+            height: 65px;
+            font-size: 16px;
+        }
+    }
+}
+
+
+/*============================
+  　ドロップメニュー
+================================*/
+.select2-container {
+    width: 100%!important;
+    position: relative;
+    &--default {
+        & .select2-selection--single {
+            height: auto!important;
+            border: solid 2px rgba(143, 143, 143, 0.168627451)!important;
+            & .select2-selection__arrow {
+                height: 26px;
+                position: absolute;
+                top: 45%!important;
+                transform: translateY(-50%);
+                right: 20px!important;
+                width: 20px;
+                & b {
+                    border-width: 10px 7px 0 7px!important;
+                }
+            }
+          & .select2-selection__rendered {
+                color: #444;
+                font-weight: 500;
+                padding: 17px 20px;
+                line-height: 28px;
+                padding: 17px 24px!important;
+                font-size: 18px;
+                line-height: 1.2;
+                @include pc(sp){
+                    padding: 17px;
+                    font-size: 14.5px;
+                }
+            }
+        }   
+        &--open {
+            & .select2-selection--single {
+               & .select2-selection__arrow {
+                    top: 50%;
+                    right: 20px;
+                    transform: translateY(-50%);
+                    b {
+                        border-width: 0 7px 10px 7px!important;
+                    }
+                }
+            } 
+        } 
+    } 
+}
+.select2-search--dropdown {
+ display: none!important;
+}
+.select2-results__option {
+    padding: 9px;
+}
+
+label {
+    font-size: 18px;
+    @include pc(sp){
+        font-size: 14px;
+    }
+    &.title {
+        display: inline-block;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        @include pc(sp){
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    }
+}
+.contact-detail {
+    margin-left: 8px;
+}
+textarea {
+    width: 100%;
+    margin-top: 5px;
+    padding: 15px;
+    font-size: 18px;
+    height: auto;
+    line-height: 1;
+    border-radius: 4px;
+    border: solid 1px rgba(143, 143, 143, 0.168627451);
+    &::placeholder {
+        color: #cecece;
+    }
+}
+  
+
+/*============================
+お問い合わせフォーム確認画面
+================================*/
+  
+.confirm {
+    & h2 {
+        font-size: 42px;
+        margin-bottom: 50px;
+        @include pc(sp){
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+    }
+    & .container{
+        max-width: 930px;
+        width: calc(100% - 80px);
+        margin: auto;
+        @include pc(sp){
+            width: calc(100% - 60px);
+        }
+    }
+    & .flex {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        padding-left: 25px;
+        border-bottom: solid 1px #cecece;
+        @include pc(sp){
+            gap: 5px;
+            padding-left: 0;
+            flex-wrap: wrap;
+            padding-bottom: 10px;
+        }
+        }
+        & .flex-item {
+            width: 165px;
+            & p {
+                color: #343f55;
+                font-size: 18px;
+                @include pc(sp){
+                    font-size: 16px;
+                }
+            }
+            & ul {
+                & li {
+                    list-style: none;
+                }
+            }
+            & .text-bold{
+                font-weight: bold;
+             }
+             &:first-child {
+                flex: 0.6;
+                @include pc(sp){
+                    flex: auto;
+                    width: 100%;
+                }
+             }
+             &:last-child {
+                flex: 2;
+                & p{
+                    font-weight: normal;
+                }
+            }
+        }
+        & #message {
+            min-height: 120px;
+            pointer-events:initial;
+            overflow: inherit;
+            }
+        & .contact-confirm{
+            & .confirm-content {
+                padding: 70px 45px;
+                background: white;
+                border-radius: 30px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+                @include pc(sp){
+                    padding: 40px 20px;
+                    border-radius: 10px;
+                }
+                & .confirm-button {
+                    padding: 0;
+                    margin: 60px auto 0;
+                    border: none;
+                    justify-content: center;
+                    @include pc(sp){
+                        gap: 20px;
+                        margin-top: 50px;
+                        flex-direction: column-reverse;
+                    }
+                    }
+            }
+        }
+        & input[type="submit"] {
+            width: 50%;
+            display: flex;
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+            height: 66px;
+            font-size: 18px;
+            color: white;
+            text-decoration-line: none;
+            background: #343f55;
+            border: none;
+            box-shadow: 4px 4px 0 #7f7f7f6b;
+            @include pc(sp){
+                width: 100%;
+                font-size: 16px;
+            }
+        }
+        & input {
+            &.btn_back {
+                width: 50%;
+                display: flex;
+                font-weight: bold;
+                align-items: center;
+                justify-content: center;
+                height: 66px;
+                font-size: 18px;
+                color: #343f55;
+                text-decoration-line: none;
+                background: #F8F8F8;
+                border: none;
+                box-shadow: 4px 4px 0 #7f7f7f6b;
+                @include pc(sp){
+                    width: 100%;
+                    font-size: 16;
+                }
+            }
+        }
+    }   
+
+ 
+/*============================
+　お問い合わせフォーム送信完了
+================================*/
+
+.complete {
+    & .container{
+        max-width: 930px;
+        width: calc(100% - 80px);
+        margin: auto;
+        @include pc(sp){
+            width: calc(100% - 60px);
+        }
+    }
+    & p {
+        font-size: 18px;
+        color: white;
+        font-weight: normal;
+        text-align: center;
+        @include pc(sp){
+            font-size: 16px;
+        }
+      }
+    & a {
+        width: 50%;
+        display: flex;
+        font-weight: bold;
+        align-items: center;
+        justify-content: center;
+        height: 66px;
+        font-size: 18px;
+        color: white;
+        text-decoration-line: none;
+        background: #343f55;
+        border: none;
+        margin: 60px auto 0;
+        box-shadow: 4px 4px 0 #7f7f7f6b;
+        @include pc(sp){
+            width: 100%;
+        }
+    }
+}
